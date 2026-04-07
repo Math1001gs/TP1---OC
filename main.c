@@ -25,6 +25,8 @@ int main(int argc, char *argv[]){
 
     freopen(argv[1], "r", stdin);
 
+    if(argc==4) freopen(argv[3], "w", stdout);
+
     char atual[MAX];
 
     while(scanf("%s", atual) == 1){
