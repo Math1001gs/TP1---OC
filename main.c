@@ -63,8 +63,8 @@ int main(int argc, char *argv[]){
                 strcmp(tabela[pos].nome, "lh") == 0 ||
                 strcmp(tabela[pos].nome, "lw") == 0){
                     scanf(" %[^,], ", rd);
-                    scanf(" %s, ", im);
-                    scanf(" (%[^)]", rs1);     
+                    scanf(" %[^(] ", im);
+                    scanf(" (%[^)])", rs1);
                 }
 
                 else{
@@ -91,8 +91,8 @@ int main(int argc, char *argv[]){
                 char sim[MAX], srs1[MAX], srs2[MAX];
 
                 scanf(" %[^,], ", rs2);
-                scanf(" %s, ", im);
-                scanf(" (%[^)]", rs1);
+                scanf(" %[^(] ", im);
+                scanf(" (%[^)])", rs1);
 
                 xNparaBin(rs2,srs2);
                 xNparaBin(rs1,srs1);
