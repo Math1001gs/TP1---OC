@@ -1,5 +1,6 @@
 #include "func/func.h"
 
+//Vetor com todas as informações das 18 intruções (nome da instrução, funct7, funct3, opcode e o tipo)
 instrucao tabela[]={
     {"lb",  -1,  0b000, 0b0000011, 'I'},
     {"lh",  -1,  0b001, 0b0000011, 'I'},
@@ -22,19 +23,26 @@ instrucao tabela[]={
 };
 
 int main(int argc, char *argv[]){
+    //Main com passagem de argc e argv (Informações dos arquivos de entrada e saida)
 
+    //Todo scanf passará do terminal para o arquivo
     freopen(argv[1], "r", stdin);
 
+    //Todo printf passará do terminal para o arquivo
     if(argc==4) freopen(argv[3], "w", stdout);
 
+    //Inicializa a string para salvar a instrução a ser tratada
     char atual[MAX];
 
+    //Le o arquivo de entrada até o final
     while(scanf("%s", atual) == 1){
 
+        //Transforma as pseudo intruções na suas real instruções
         if (strcmp(atual,"li")==0)  strcpy(atual, "addi");
         if (strcmp(atual,"mv")==0)  strcpy(atual, "addi");
         if (strcmp(atual,"and")==0) strcpy(atual, "andi");
 
+        //Identifica a posição da instrução na tabela
         int pos=-1;
         for(int i=0; i<18; i++){
             if(strcmp(atual, tabela[i].nome) == 0){
@@ -43,11 +51,14 @@ int main(int argc, char *argv[]){
             }
         }
 
+        //Garante que a instrução foi reconhecida
         if(pos == -1){
             printf("Instrução nao reconhecida: %s\n", atual);
             continue;
         }
 
+        //Parte principal do código, onde de acordo com o tipo da instrução (I, S, R ou B) é feito
+        //a leitura dos argumentos seguintes, tradução para linguagem de máquina e impressão respectivamente
         switch(tabela[pos].tipo){
             case 'I':{
                 char im[MAX], rs1[MAX], rd[MAX];
@@ -90,7 +101,7 @@ int main(int argc, char *argv[]){
 
                 xNparaBin(rs2,srs2);
                 xNparaBin(rs1,srs1);
-                NumparaBin(im, sim);
+                NumparaBin(im, sim); 
 
                 printf("%.7s", sim);
                 printf("%s", srs2);
