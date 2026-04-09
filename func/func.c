@@ -1,10 +1,12 @@
 #include "func.h"
 
+//Função para printar o binário pois se o número fosse 0000000, o printf printaria só um 0
 void printBin(int n, int bits){
     for(int i = bits-1; i >= 0; i--)
         printf("%d", (n >> i) & 1);
 }
 
+//Função para converter transistores para binário (x0,x1,x2,x3, ..., x31)
 int xNparaBin(const char *str, char out_bin[MAX]){
     if (str[0] != 'x') return -1;
 
@@ -20,6 +22,7 @@ int xNparaBin(const char *str, char out_bin[MAX]){
     return n;
 }
 
+//Função para converter números inteiros em binários (Imediatos)
 int NumparaBin(const char *str, char out_bin[MAX]){
     int n = atoi(str);
 
