@@ -6,14 +6,16 @@
 
 #define MAX 15
 
+//Estrutura para salvar as informações de cada instrução
 typedef struct{
     char *nome;
     int funct7;
     int funct3;
     int opcode;
-    char tipo;  
+    char tipo;
 }instrucao;
 
+//Funções para manipular binários
 void printBin(int n, int bits);
 int xNparaBin(const char *str, char out_bin[MAX]);
 int NumparaBin(const char *str, char out_bin[MAX]);
